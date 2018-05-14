@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
   def help
   end
 
-	def abound
+	def about
 	end
+
 end
