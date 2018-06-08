@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 			flash[:success]="Welcome to the Sample App! 登録完了"
 			#初めは登録完了ページを出したい
 			redirect_to @user
+			#作成されたゆーざぺーじにとぶ /users/3など
 		else 
 			render 'new'
 		end
