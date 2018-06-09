@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 	#	@user=User.new(params[:user])丸々paramsのhashを渡すのは良くない
 		@user=User.new(user_params)
 		if@user.save
+			log_in @user
 			flash[:success]="Welcome to the Sample App! 登録完了"
 			#初めは登録完了ページを出したい
 			redirect_to @user
