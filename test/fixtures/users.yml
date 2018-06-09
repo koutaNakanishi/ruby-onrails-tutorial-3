@@ -1,2 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
+#user=users(:michael)で参照できる
+michael:
+ name: Micheal Example
+ email: michael@example.com
+ password_digest: <%= User.digest('password') %>
