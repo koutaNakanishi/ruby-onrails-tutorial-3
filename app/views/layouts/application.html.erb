@@ -14,8 +14,9 @@
 			<div class="container">
 				<% flash.each do|message_type,message| %>
 				<%#message-typeは文字列になるから、動的にクラスを指定できる %>
-				<!--  <div class="alert alert-<%=message_type%>"><%=message%></div> -->
-				<%= content_tag(:div,message:"class:alert alert-#{message_type}") %>
+				 <div class="alert alert-<%=message_type%>"><%=message%></div>
+
+				<!-- <%= content_tag(:div,message:"class:alert alert-#{message_type}") %> -->
 				<%end %>
 			</div>
 		   <%= yield %>

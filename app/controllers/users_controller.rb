@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user=User.find(params[:id])
+
 	end
 
 	private#ネットワーク経由で実行できない（攻撃される危険性が少ない？）ヘルパー
