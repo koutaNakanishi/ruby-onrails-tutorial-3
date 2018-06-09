@@ -23,9 +23,13 @@ class UsersController < ApplicationController
 
 	end
 
+	def edit
+		@user=User.find(params[:id])
+	end
+
 	private#ネットワーク経由で実行できない（攻撃される危険性が少ない？）ヘルパー
 		def user_params
 			params.require(:user).permit(:name,:email,:password,:password_confirmation)
-		end
-
+		end 
+		
 end
