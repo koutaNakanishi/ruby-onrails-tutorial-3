@@ -11,7 +11,8 @@ class User < ApplicationRecord
 	#passwordとpassword_confirmationがつかえるようになる
 	#authenticate 引数とパスワードが一致するとUserオブジェクトを、間違ってるとfalseを変える関数が使える
 	has_secure_password
-	validates :password, presence:true ,length: {minimum:6}
+	validates :password, presence:true ,length: {minimum:6},allow_nil:true#空を許す。has_secure_passwordで
+	#登録時は別のバリデーションが行われる
 	
 	def User.digest(string)#渡された文字列のハッシュ値を返す
 		cost=ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
