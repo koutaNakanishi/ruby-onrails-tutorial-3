@@ -11,7 +11,16 @@ class ActiveSupport::TestCase
 
 	include ApplicationHelper
 
-	def is_logged_in?
-		!session[:user_id].nil?
+	def log_in_as(user)
+		#debugger
+		session[:user_id] = user.id
 	end
+
+	def is_logged_in?
+	#	debugger
+		!session[:user_id].nil?
+	#	session[:user_id]
+	end
+
+
 end
