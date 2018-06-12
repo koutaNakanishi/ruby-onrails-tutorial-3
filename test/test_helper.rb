@@ -13,6 +13,8 @@ class ActiveSupport::TestCase
 
 	def log_in_as(user)
 		#debugger
+		#get login_path
+#		post params: {user: {name: user.name , email: user.email , password: "password" ,  password_confirmation: "password"}}
 		session[:user_id] = user.id
 	end
 

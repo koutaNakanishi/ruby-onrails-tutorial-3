@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :logged_in_user,only:[:edit,:update]
+	before_action :logged_in_user,only:[:index,:edit,:update]
 	before_action :correct_user,only:[:edit,:update]
 #editとupdateに制限をかける（指定しないと全部に制限がかかる) 
 	
@@ -29,6 +29,11 @@ class UsersController < ApplicationController
 
 	def edit
 		@user=User.find(params[:id])
+	end
+
+	def index
+	#	@users=User.all
+		@users=User.paginate(page:params[:page])#いい感じにユーザを小分けにとってくれる	
 	end
 
 	def update
