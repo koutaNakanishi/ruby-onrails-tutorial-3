@@ -51,11 +51,32 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 		post login_path,params:{session: {email: @other_user.email,password:'password'} }
 		log_in_as(@other_user)
 		assert_not @other_user.admin?
-		patch user_path(@other_user),params: {user: {password: "password",password_confirmation: "password", admin:true}}
-		assert_not @other_user.admin?
+		assert is_logged_in?
+		patch user_path(@other_user),params: {user: {password:"", password_confirmation:"", admin:true}}
+		assert_not @other_user.reload.admin?
 	end
 
+	test "should redirect destroy when not logged in and non-admin" do
+		
+		assert_no_difference 'User.count' do
+			delete user_path(@user)
+		end
+		assert_redirected_to login_url
+
+
+		post login_path,params:{session: {email: @other_user.email,password:'password'} }
+		log_in_as(@other_user)
+
+		assert_no_difference 'User.count' do
+			delete user_path(@user)
+		end
+			assert_redirected_to root_url
+	end
 end
+
+
+
+
 
 
 
