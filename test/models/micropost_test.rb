@@ -7,7 +7,7 @@ class MicropostTest < ActiveSupport::TestCase
 
 	def setup
 		@user=users(:michael)
-		@micropost=Micropost.new(content: "Loerm ipsum",user_id: @user.id)#このコードは慣習的に良くない
+		@micropost=@user.microposts.new(content: "Loerm ipsum",user_id: @user.id)#このコードは慣習的に良くない
 	end
 
 	test "should be valid" do
@@ -28,5 +28,10 @@ class MicropostTest < ActiveSupport::TestCase
 		@micropost.content="a"*141
 		assert_not @micropost.valid?
 	end
+	
+	test "order should be most recent first" do
+		assert_equal microposts(:most_recent),Micropost.first
 
+	end
+	
 end
