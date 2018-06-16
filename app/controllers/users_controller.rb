@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 	before_action :logged_in_user,only:[:index,:edit,:update, :destroy]
 	before_action :correct_user,only:[:edit,:update]
 	before_action :admin_user, only:[:destroy]
-#editとupdateに制限をかける（指定しないと全部に制限がかかる) 
+#editとupdateに制限をかける（指定しないと全部に制限がかかる) )
 	
   def new
 		@user=User.new
