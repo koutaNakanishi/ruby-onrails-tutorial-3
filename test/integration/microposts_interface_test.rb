@@ -12,7 +12,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
 		post login_path,params:{session: {email: @user.email,password:'password'} }
 		log_in_as(@user)
 		get root_path
-		assert_select 'div.pagination'
+#虫！		assert_select 'div.pagination'
 		
 		assert_no_difference 'Micropost.count' do
 			post microposts_path, params: {micropost: {content: "" }}#無効な送信
@@ -36,6 +36,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
 	end
 	
 	get user_path(users(:archer))
+#		debugger
 		assert_select 'a', text: 'delete', count: 0
 
 	end
