@@ -21,6 +21,8 @@ gem 'uglifier', '3.2.0'
 
 #use faker
 gem 'faker', '1.7.3'
+
+#gem 'faker-okinawa'
 #use jquery########
 gem 'jquery-rails'
 
